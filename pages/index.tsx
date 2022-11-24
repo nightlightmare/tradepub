@@ -1,10 +1,11 @@
-import Head from 'next/head'
-import clientPromise from '../lib/mongodb'
-import { InferGetServerSidePropsType } from 'next'
+import { InferGetServerSidePropsType } from 'next';
+import Head from 'next/head';
+
+import clientPromise from '../lib/mongodb';
 
 export async function getServerSideProps() {
   try {
-    await clientPromise
+    await clientPromise;
     // `await clientPromise` will use the default database passed in the MONGODB_URI
     // However you can use another database (e.g. myDatabase) by replacing the `await clientPromise` with the following code:
     //
@@ -16,12 +17,12 @@ export async function getServerSideProps() {
 
     return {
       props: { isConnected: true },
-    }
+    };
   } catch (e) {
-    console.error(e)
+    console.error(e);
     return {
       props: { isConnected: false },
-    }
+    };
   }
 }
 
@@ -247,5 +248,5 @@ export default function Home({
         }
       `}</style>
     </div>
-  )
+  );
 }
